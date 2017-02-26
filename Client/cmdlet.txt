@@ -1,0 +1,20 @@
+npm start
+
+npm run build
+
+npm test
+
+-- // Npm install last version // ---
+	npm install npm@latest -g
+
+--// quick start //
+https://github.com/angular/quickstart
+
+ "webpack": "2.2.0",
+    "webpack-dev-server": "2.2.0-rc.0",
+    "webpack-merge": "^2.4.0",
+"@types/node": "^6.0.46",
+    "@types/jasmine": "2.5.36"
+
+        "start": "webpack-dev-server --inline --progress --port 8080",
+    "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
