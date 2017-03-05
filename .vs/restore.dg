@@ -1,1 +1,4 @@
-#:D:\Project\GitHub\Angular2DotNetCore\Client\Client.xproj
+#:D:\Project\GitHub\Angular2DotNetCore\WebAPI\WebAPI.xproj
+D:\Project\GitHub\Angular2DotNetCore\WebAPI\WebAPI.xproj|D:\Project\GitHub\Angular2DotNetCore\DAL\DAL.xproj
+D:\Project\GitHub\Angular2DotNetCore\WebAPI\WebAPI.xproj|D:\Project\GitHub\Angular2DotNetCore\Entity\Entity.xproj
+D:\Project\GitHub\Angular2DotNetCore\DAL\DAL.xproj|D:\Project\GitHub\Angular2DotNetCore\Entity\Entity.xproj

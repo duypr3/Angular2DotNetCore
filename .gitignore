@@ -63,6 +63,10 @@ ipch/
 *.vspx
 *.sap
 
+#Visual Studio Debug
+**/obj/
+**/bin/
+
 # Node Files #
 **/node_modules/
 **/bower_components/
