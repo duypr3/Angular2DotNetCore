@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{6EC7B202-147D-4D0E-9B1A-259793CFC143}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DAL", "DAL\DAL.xproj", "{6EC7B202-147D-4D0E-9B1A-259793CFC143}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity", "Entity\Entity.csproj", "{BA3F306D-FA54-4E3E-8DE0-5D184FA2A4B6}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Entity", "Entity\Entity.xproj", "{BA3F306D-FA54-4E3E-8DE0-5D184FA2A4B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{45AD044C-5F91-46B1-8DBE-6CC278E12F2B}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Service", "Service\Service.xproj", "{45AD044C-5F91-46B1-8DBE-6CC278E12F2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{807D0565-FC44-4896-B61D-CF6FA7759AF5}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WebAPI", "WebAPI\WebAPI.xproj", "{807D0565-FC44-4896-B61D-CF6FA7759AF5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{95A080CD-1096-4F7D-AC46-9A6D0D96F57C}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Client", "Client\Client.xproj", "{95A080CD-1096-4F7D-AC46-9A6D0D96F57C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
