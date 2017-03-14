@@ -1,4 +1,4 @@
-/* SystemJS module definition */
-declare var module: {
+﻿/* SystemJS module definition */
+declare var NodeModule: {
   id: string;
 };

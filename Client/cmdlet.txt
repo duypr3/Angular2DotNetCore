@@ -1,4 +1,8 @@
+
+
 ng new Client --routing
+
+ng generate service login --spec=false
 
 ng serve --open 
 (ng serve --open --port xxxx)
