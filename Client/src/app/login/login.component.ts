@@ -10,15 +10,22 @@ import { LoginService }  from './login.service';
 
 export class LoginComponent {
 	title:string;
+	logins: any;
 	constructor(private loginService: LoginService) { }
 
 	ngOnInit(){
-		this.title = this.loginService.someMethod();
+		this.title = this.loginService.getTitle();
+	//	this.logins = this.loginService.getAll();
 	}
-	// getAllLogin(){		
-	//     this.loginService.get("login","GetAll")
-	//       	.subscribe(
- //                     result => this.logins = result,
- //                     error =>  this.errorMessage = <any>error);
-	// }
+	
+	getAllLogin(){		
+	   this.loginService.getAll().subscribe(
+	             result => {
+	             	console.log('reuslt>>> ', result); 
+	             	this.logins = result
+
+	             },
+	             error =>  {console.error("[ GetAll ]: " + <any>error);}
+	         );
+	}
 }

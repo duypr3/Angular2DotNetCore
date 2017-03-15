@@ -1,5 +1,4 @@
 export class Config {
-
-	readonly domainApi = "http://localhost:32760";
-	readonly serviceBase = "api";
+	domainApi: string = "http://localhost:32760";
+	serviceBase: string = "api";
 }

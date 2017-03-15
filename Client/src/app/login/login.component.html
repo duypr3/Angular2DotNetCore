@@ -1,3 +1,38 @@
-<p>
-  {{title}}
-</p>
+<div class="container">
+	<h1>{{title}}</h1>
+	<form>
+		<div class="form-group">
+			<!-- <label for="name">Name</label>
+			<input type="text" class="form-control" required 
+			[(ngModel)]="item.username" name="name">
+			<label for="pass">Pass</label>
+			<input type="text" class="form-control" required 
+			[(ngModel)]="item.password" name="pass"> -->
+			<label>user name:</label> <input #username />
+			<label>pass word:</label> <input #password />
+		</div>		
+		<!-- <div class="form-group">
+			<label for="alterEgo">Alter Ego</label>
+			<input type="text" class="form-control" 
+			[(ngModel)]="model.alterEgo" name="alterEgo">
+		</div>
+		<div class="form-group">
+			<label for="power">login Power</label>
+			<select class="form-control" required
+			[(ngModel)]="model.power" name="power">
+			<option *ngFor="let pow of powers">{{pow}}</option>
+			</select>
+		</div> -->
+		<!-- <button type="submit" class="btn btn-default">Submit</button> -->
+		<button type="button" class="btn btn-default" (click)="addLogin(username.value,password.value)">Add</button>
+		<button type="button" class="btn btn-default" (click)="getAllLogin()">Get All</button>
+		<button type="button" class="btn btn-default" (click)="deleteLogin()">Delete</button>
+		<ul>
+			<li *ngFor="let login of logins">
+				<span class="badge">{{login.ID}}</span>
+				<span>{{login.Username}}</span>
+				<span>{{login.Password}}</span>
+			</li>
+		</ul>
+	</form>
+</div>

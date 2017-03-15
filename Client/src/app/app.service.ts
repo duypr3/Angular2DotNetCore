@@ -1,4 +1,4 @@
-import { Injectable }              from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -10,15 +10,16 @@ import { Config }  from './config';
 @Injectable()
 
 export class AppService {  
-
 	private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions({ headers: this.headers });
 
   //private apiUrl = 'http://localhost:32760/api/login/AddOrUpdate';  // URL to web api
   apiUrl: string; controllerApi: string; actionApi: string;
-
-  constructor (private http: Http, private config: Config) {}
-
+  config: Config;
+  constructor (private http: Http) {
+    this.config = new Config();
+  }
+  
   setController(controllerName: string){
     if (typeof(controllerName) == 'undefined') controllerName = "";
     this.controllerApi = controllerName;
@@ -30,7 +31,8 @@ export class AppService {
   }
 
   buildApiUrl(){
-    this.apiUrl = this.config.domainApi + "/" + this.config.serviceBase + "/" + this.controllerApi + "/" + this.actionApi;
+    this.apiUrl = this.config.domainApi  + "/" + this.config.serviceBase + "/" + this.controllerApi + "/" + this.actionApi;
+    //this.apiUrl = "http://localhost:32760"  + "/" + "api" + "/" + this.controllerApi + "/" + this.actionApi;
   }
 
   buildApiUrlWithActionName(controllerName: string, actionName: string){
@@ -42,8 +44,7 @@ export class AppService {
   }
 
   // Build method //
-  get(controllerName: string, actionName: string): Observable<any>{
-    this.setController(controllerName);
+  get(actionName: string): Observable<any>{
     this.setAction(actionName);
     this.buildApiUrl();
 
@@ -89,6 +90,7 @@ export class AppService {
   
   private extractData(res: Response) {
     let body = res.json();
+    console.log('body>> ',body);
     return body || { };
   }
 
