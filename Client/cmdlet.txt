@@ -1,4 +1,6 @@
+npm install npm@latest -g
 
+npm install -g @angular/cli
 
 ng new Client --routing
 

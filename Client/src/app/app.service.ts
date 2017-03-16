@@ -42,7 +42,6 @@ export class AppService {
 
     return this.apiUrl;
   }
-
   // Build method //
   get(actionName: string): Observable<any>{
     this.setAction(actionName);
@@ -62,10 +61,11 @@ export class AppService {
 
     this.setAction(actionName);
     this.buildApiUrl();
-    console.log("data>>> ",params);    
+    console.log("data>>> ",params);
     return this.http.get(this.apiUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
+
   }
   addOrUpdate(controllerName: string, actionName: string, data: string): Observable<any>{
     this.setController(controllerName);
@@ -89,6 +89,7 @@ export class AppService {
   }
   
   private extractData(res: Response) {
+    console.log('res>> ', res);
     let body = res.json();
     console.log('body>> ',body);
     return body || { };

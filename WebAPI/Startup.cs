@@ -36,6 +36,8 @@ namespace WebAPI
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
+            services.AddCors();  // before add MVC
+
             services.AddMvc();
 
             services.AddDbContext<DefaultDbContext>(options =>
@@ -58,6 +60,8 @@ namespace WebAPI
             app.UseApplicationInsightsRequestTelemetry();
 
             app.UseApplicationInsightsExceptionTelemetry();
+
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
             app.UseMvc();
         }

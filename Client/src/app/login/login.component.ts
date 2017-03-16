@@ -28,4 +28,15 @@ export class LoginComponent {
 	             error =>  {console.error("[ GetAll ]: " + <any>error);}
 	         );
 	}
+
+	getById(id){		
+	   this.loginService.getById(id).subscribe(
+	             result => {
+	             	console.log('reuslt>>> ', result); 
+	             	this.logins = result
+
+	             },
+	             error =>  {console.error("[ getById ]: " + <any>error);}
+	         );
+	}
 }

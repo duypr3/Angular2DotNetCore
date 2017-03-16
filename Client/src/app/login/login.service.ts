@@ -10,18 +10,15 @@ export class LoginService extends AppService {
 	constructor (private _http: Http) {		
 		super(_http);
 
-		this.setController("Login");
+		this.setController("Values");
 	}
 
-	result: any;
-	errorMessage: string;
-
 	getById(id: number): any{
-		this.get("GetById?id=" + id);			
+		return this.get(id);			
 	}
 
 	getAll(): any{
-		return this.get("GetAll");
+		return this.get("");
 	}
 
 	getTitle() {
