@@ -74,3 +74,4 @@ ipch/
 **/npm-debug.log.*
 
 
+*.suo
