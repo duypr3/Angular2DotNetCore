@@ -14,7 +14,7 @@ export class LoginService extends AppService {
 	}
 
 	getById(id: number): any{
-		return this.get(id);			
+		return this.get(id.toString());			
 	}
 
 	getAll(): any{
