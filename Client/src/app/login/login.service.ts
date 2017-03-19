@@ -14,11 +14,11 @@ export class LoginService extends AppService {
 	}
 
 	getById(id: number): any{
-		return this.get(id.toString());			
+		return this.get("GetById?id=" + id.toString());			
 	}
 
 	getAll(): any{
-		return this.get("");
+		return this.get("get");
 	}
 
 	getTitle() {

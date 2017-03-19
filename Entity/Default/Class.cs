@@ -12,5 +12,10 @@ namespace Entity
         public Int64 TeacherID { get; set; }
         public virtual Teacher Teacher { get; set; }
         public virtual ICollection<Student> Students { get; set; }
+
+        public Class()
+        {
+            this.Students = new HashSet<Student>();
+        }
     }
 }

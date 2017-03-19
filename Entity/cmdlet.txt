@@ -1,0 +1,14 @@
+﻿
+Add-Migration FirstMigrationDefault -OutputDir Migrations\Default -Context DefaultDbContext
+
+Remove-Migration -Context DefaultDbContext -Force
+
+Add-Migration FirstMigrationDefault -Context DataMiningDbContext
+
+Remove-Migration -Context DataMiningDbContext -Force
+
+
+Update-Database -Context DefaultDbContext
+
+Update-Database -Context DataMiningDbContext
+

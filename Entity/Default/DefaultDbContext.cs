@@ -13,11 +13,10 @@ namespace Entity
         */
         public DefaultDbContext(DbContextOptions<DefaultDbContext> options)
              : base(options){ }
-     
-        public DbSet<Student> Students { set; get; }
-        public DbSet<Class> Classes { set; get; }
-        public DbSet<Teacher> Teachers { set; get; }
-        public DbSet<Login> Logins { set; get; }
-        
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Class> Classes { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Login> Logins { get; set; }
+
     }
 }

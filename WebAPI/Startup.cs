@@ -41,10 +41,10 @@ namespace WebAPI
             services.AddMvc();
 
             services.AddDbContext<DefaultDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultDatabase")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<DataMiningDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DataMiningDatabase")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DataMiningConnection")));
 
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
 
@@ -52,14 +52,29 @@ namespace WebAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory
+                                , DefaultDbContext defaultDbContext, DataMiningDbContext dataMiningDbContext)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseApplicationInsightsRequestTelemetry();
+           /* if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStatusCodePages(); //return 500 (Internal Server Error) or 404 (Not Found)
+            */
+            app.UseStaticFiles();
 
-            app.UseApplicationInsightsExceptionTelemetry();
+
+            /*app.UseApplicationInsightsRequestTelemetry();
+
+            app.UseApplicationInsightsExceptionTelemetry();*/
 
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());  
 
@@ -69,6 +84,8 @@ namespace WebAPI
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            DefaultDbInitializer.Initialize(defaultDbContext);
         }
     }
 }
