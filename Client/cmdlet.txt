@@ -20,3 +20,8 @@ ng build --prod
 //--------------------------------//
 
 npm update
+
+
+//-------------- OTHER -----------------//
+
+{ "key": "ctrl+k ctrl+d", "command": "editor.action.formatDocument" }

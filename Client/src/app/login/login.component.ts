@@ -11,10 +11,13 @@ import { LoginService }  from './login.service';
 export class LoginComponent {
 	title:string;
 	logins: any;
+	username: string; password: string;
 	constructor(private loginService: LoginService) { }
 
 	ngOnInit(){
 		this.title = this.loginService.getTitle();
+		this.username = 'adiofjasdf';
+		this.password = 'hehe';
 	//	this.logins = this.loginService.getAll();
 	}
 	
