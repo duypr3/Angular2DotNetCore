@@ -15,3 +15,8 @@ ng serve --open
 (ng serve --open --port xxxx)
 
 ng build --prod
+
+
+//--------------------------------//
+
+npm update

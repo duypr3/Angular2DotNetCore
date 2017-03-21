@@ -7,11 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-<<<<<<< HEAD
 import { StudentComponent } from './student/student.component';
-=======
 import { HomeComponent } from './home/home.component';
->>>>>>> origin/master
+
 
 
 @NgModule({
@@ -19,11 +17,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     LoginComponent,
     NotFoundComponent,
-<<<<<<< HEAD
-    StudentComponent    
-=======
-    HomeComponent    
->>>>>>> origin/master
+    StudentComponent,    
+    HomeComponent
   ],
   imports: [
     BrowserModule,
