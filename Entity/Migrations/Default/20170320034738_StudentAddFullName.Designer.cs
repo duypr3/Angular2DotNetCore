@@ -8,8 +8,8 @@ using Entity;
 namespace Entity.Migrations.Default
 {
     [DbContext(typeof(DefaultDbContext))]
-    [Migration("20170319165942_2017-03-19_11-59")]
-    partial class _20170319_1159
+    [Migration("20170320034738_StudentAddFullName")]
+    partial class StudentAddFullName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,6 +73,8 @@ namespace Entity.Migrations.Default
                     b.Property<DateTime>("EnrollmentDate");
 
                     b.Property<string>("FirstMidName");
+
+                    b.Property<string>("FullName");
 
                     b.Property<string>("LastName");
 
