@@ -8,6 +8,8 @@ ng new Client --routing
 
 ng generate component [name]
 
+ng generate component home/oxygen --spec=false
+
 ng generate service login --spec=false
 
 //---------------------------//

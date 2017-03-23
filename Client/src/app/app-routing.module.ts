@@ -4,12 +4,11 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { HomeComponent } from './home/home.component';
-
+import { OxygenComponent } from './home/oxygen/oxygen.component';
 
 const routes: Routes = [
 	
-	{ path: 'home',  component: HomeComponent },
+	{ path: 'home',  component: OxygenComponent },
 	{ path: 'login',  component: LoginComponent },
 	{ path: '',   redirectTo: '/home', pathMatch: 'full' },
 	{ path: '**', component: NotFoundComponent }

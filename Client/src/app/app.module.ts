@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentComponent } from './student/student.component';
-import { HomeComponent } from './home/home.component';
+import { OxygenComponent } from './home/oxygen/oxygen.component';
+import { MentorComponent } from './home/mentor/mentor.component';
 
 
 
@@ -18,7 +19,7 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     NotFoundComponent,
     StudentComponent,    
-    HomeComponent
+    OxygenComponent, MentorComponent
   ],
   imports: [
     BrowserModule,
