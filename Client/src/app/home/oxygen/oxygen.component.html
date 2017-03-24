@@ -1,15 +1,14 @@
-	<div class="gtco-loader"></div>
-	
-	<div id="page">
+<div class="gtco-loader"></div>
+<div id="page">
 	<nav class="gtco-nav" role="navigation">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-xs-2">
-					<div id="gtco-logo"><a href="index.html">Oxygen.</a></div>
+					<div id="gtco-logo"><a href="#/home">Oxygen.</a></div>
 				</div>
 				<div class="col-xs-8 text-center menu-1">
 					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
+						<li class="active"><a href="#/home">Home</a></li>
 						<li><a href="about.html">About</a></li>
 						<li class="has-dropdown">
 							<a href="services.html">Services</a>
@@ -34,15 +33,30 @@
 				</div>
 				<div class="col-xs-2 text-right hidden-xs menu-2">
 					<ul>
-						<li class="btn-cta"><a href="#"><span>Login</span></a></li>
+						<!--<li class="btn-cta"><a href="#"><span>Login</span></a></li>-->
+						<li><a href="#" data-target="#login" data-toggle="modal">Sign in</a></li>
 					</ul>
 				</div>
 			</div>
 			
 		</div>
 	</nav>
+	<div class="modal fade" id="login" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <!-- Modal content no 1-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title text-center form-title">Login</h4>
+          </div>
+          <div class="modal-body padtrbl">           
+          <app-login>Loading...</app-login>
+        </div>
+      </div>
 
-	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_bg_1.jpg);">
+    </div>
+	</div>
+	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(../../assets/img/img_bg_1.jpg);">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
@@ -138,7 +152,7 @@
 				</div>
 
 				<div class="col-md-6">
-					<div class="gtco-video gtco-bg" style="background-image: url(images/img_1.jpg); ">
+					<div class="gtco-video gtco-bg" style="background-image: url(../../assets/img/img_1.jpg); ">
 						<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-video2"></i></a>
 						<div class="overlay"></div>
 					</div>
@@ -147,7 +161,7 @@
 		</div>
 	</div>
 
-	<div id="gtco-counter" class="gtco-bg gtco-counter" style="background-image:url(images/img_bg_2.jpg);">
+	<div id="gtco-counter" class="gtco-bg gtco-counter" style="background-image:url(../../assets/img/img_bg_2.jpg);">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="display-t">
@@ -214,7 +228,7 @@
 						<div class="item">
 							<div class="testimony-slide active text-center">
 								<figure>
-									<img src="images/person_1.jpg" alt="user">
+									<img src="../../assets/img/person_1.jpg" alt="user">
 								</figure>
 								<span>Jean Doe, via <a href="#" class="twitter">Twitter</a></span>
 								<blockquote>
@@ -225,7 +239,7 @@
 						<div class="item">
 							<div class="testimony-slide active text-center">
 								<figure>
-									<img src="images/person_2.jpg" alt="user">
+									<img src="../../assets/img/person_2.jpg" alt="user">
 								</figure>
 								<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
 								<blockquote>
@@ -236,7 +250,7 @@
 						<div class="item">
 							<div class="testimony-slide active text-center">
 								<figure>
-									<img src="images/person_3.jpg" alt="user">
+									<img src="../../assets/img/person_3.jpg" alt="user">
 								</figure>
 								<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
 								<blockquote>
@@ -459,14 +473,14 @@
 						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> 
 						<small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
 					</p>
-					<p class="pull-right">
+					<!--<p class="pull-right">
 						<ul class="gtco-social-icons pull-right">
 							<li><a href="#"><i class="icon-twitter"></i></a></li>
 							<li><a href="#"><i class="icon-facebook"></i></a></li>
 							<li><a href="#"><i class="icon-linkedin"></i></a></li>
 							<li><a href="#"><i class="icon-dribbble"></i></a></li>
 						</ul>
-					</p>
+					</p>-->
 				</div>
 			</div>
 

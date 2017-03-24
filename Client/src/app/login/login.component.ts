@@ -17,8 +17,9 @@ export class LoginComponent {
 	ngOnInit(){
 		this.title = this.loginService.getTitle();
 		this.username = 'adiofjasdf';
-		this.password = 'hehe';
+		this.password = 'hehesssdfádf';
 	//	this.logins = this.loginService.getAll();
+		console.log("username>>> ", this.username, this.password);
 	}
 	
 	getAllLogin(){		
@@ -28,7 +29,7 @@ export class LoginComponent {
 	             	this.logins = result
 
 	             },
-	             error =>  {console.error("[ GetAll ]: " + <any>error);}
+	             error =>  {console.error("[ loginService.getAll ]: " + <any>error);}
 	         );
 	}
 
@@ -39,7 +40,7 @@ export class LoginComponent {
 	             	this.logins = result
 
 	             },
-	             error =>  {console.error("[ getById ]: " + <any>error);}
+	             error =>  {console.error("[ loginService.getById ]: " + <any>error);}
 	         );
 	}
 }
