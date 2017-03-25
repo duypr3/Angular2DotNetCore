@@ -5,11 +5,11 @@ import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OxygenComponent } from './home/oxygen/oxygen.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
 	
 	{ path: 'home',  component: OxygenComponent },
-	{ path: 'login',  component: LoginComponent },
 	{ path: '',   redirectTo: '/home', pathMatch: 'full' },
 	{ path: '**', component: NotFoundComponent }
 

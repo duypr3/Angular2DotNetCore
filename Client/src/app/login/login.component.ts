@@ -16,10 +16,6 @@ export class LoginComponent {
 
 	ngOnInit(){
 		this.title = this.loginService.getTitle();
-		this.username = 'adiofjasdf';
-		this.password = 'hehesssdfádf';
-	//	this.logins = this.loginService.getAll();
-		console.log("username>>> ", this.username, this.password);
 	}
 	
 	getAllLogin(){		

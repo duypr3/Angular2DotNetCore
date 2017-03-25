@@ -35,27 +35,42 @@
 					<ul>
 						<!--<li class="btn-cta"><a href="#"><span>Login</span></a></li>-->
 						<li><a href="#" data-target="#login" data-toggle="modal">Sign in</a></li>
+						<li><a href="#" data-target="#sign-up" data-toggle="modal">Sign up</a></li>
 					</ul>
 				</div>
 			</div>
-			
+
 		</div>
 	</nav>
 	<div class="modal fade" id="login" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <!-- Modal content no 1-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title text-center form-title">Login</h4>
-          </div>
-          <div class="modal-body padtrbl">           
-          <app-login>Loading...</app-login>
-        </div>
-      </div>
-
-    </div>
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content no 1-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title text-center form-title">Login</h4>
+				</div>
+				<div class="modal-body padtrbl">
+					<app-login>Loading...</app-login>
+				</div>
+			</div>
+		</div>
 	</div>
+	<div class="modal fade" id="sign-up" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content no 1-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title text-center form-title">Register</h4>
+				</div>
+				<div class="modal-body padtrbl">
+					<app-sign-up>Loading...</app-sign-up>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(../../assets/img/img_bg_1.jpg);">
 		<div class="gtco-container">
 			<div class="row">
@@ -71,7 +86,7 @@
 			</div>
 		</div>
 	</header>
-	
+
 	<div id="gtco-features">
 		<div class="gtco-container">
 			<div class="row">
@@ -81,7 +96,8 @@
 							<i class="icon-eye"></i>
 						</span>
 						<h3>Retina Ready</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor
+							eius.</p>
 						<p><a href="#" class="btn btn-primary">Learn More</a></p>
 					</div>
 				</div>
@@ -91,7 +107,8 @@
 							<i class="icon-command"></i>
 						</span>
 						<h3>Fully Responsive</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor
+							eius.</p>
 						<p><a href="#" class="btn btn-primary">Learn More</a></p>
 					</div>
 				</div>
@@ -101,7 +118,8 @@
 							<i class="icon-power"></i>
 						</span>
 						<h3>Web Starter</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor
+							eius.</p>
 						<p><a href="#" class="btn btn-primary">Learn More</a></p>
 					</div>
 				</div>
@@ -114,7 +132,8 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 					<h2>Why Choose Us</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor
+						eius.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -125,7 +144,8 @@
 						</span>
 						<div class="feature-copy">
 							<h3>Retina Ready</h3>
-							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa
+								amet.</p>
 						</div>
 					</div>
 
@@ -135,7 +155,8 @@
 						</span>
 						<div class="feature-copy">
 							<h3>Fully Responsive</h3>
-							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa
+								amet.</p>
 						</div>
 					</div>
 
@@ -145,7 +166,8 @@
 						</span>
 						<div class="feature-copy">
 							<h3>Ready To Use</h3>
-							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+							<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa
+								amet.</p>
 						</div>
 					</div>
 
@@ -216,66 +238,69 @@
 	<div id="gtco-testimonial">
 		<div class="gtco-container">
 			<!-- <div class="row"> -->
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-						<h2>Testimonial</h2>
-					</div>
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>Testimonial</h2>
 				</div>
-				<div class="row animate-box">
-					
-				
-					<div class="owl-carousel owl-carousel-fullwidth ">
-						<div class="item">
-							<div class="testimony-slide active text-center">
-								<figure>
-									<img src="../../assets/img/person_1.jpg" alt="user">
-								</figure>
-								<span>Jean Doe, via <a href="#" class="twitter">Twitter</a></span>
-								<blockquote>
-									<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-								</blockquote>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-slide active text-center">
-								<figure>
-									<img src="../../assets/img/person_2.jpg" alt="user">
-								</figure>
-								<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-								<blockquote>
-									<p>&ldquo;Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-								</blockquote>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-slide active text-center">
-								<figure>
-									<img src="../../assets/img/person_3.jpg" alt="user">
-								</figure>
-								<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-								<blockquote>
-									<p>&ldquo;Far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-								</blockquote>
-							</div>
+			</div>
+			<div class="row animate-box">
+
+
+				<div class="owl-carousel owl-carousel-fullwidth ">
+					<div class="item">
+						<div class="testimony-slide active text-center">
+							<figure>
+								<img src="../../assets/img/person_1.jpg" alt="user">
+							</figure>
+							<span>Jean Doe, via <a href="#" class="twitter">Twitter</a></span>
+							<blockquote>
+								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+									texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
 						</div>
 					</div>
+					<div class="item">
+						<div class="testimony-slide active text-center">
+							<figure>
+								<img src="../../assets/img/person_2.jpg" alt="user">
+							</figure>
+							<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
+							<blockquote>
+								<p>&ldquo;Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-slide active text-center">
+							<figure>
+								<img src="../../assets/img/person_3.jpg" alt="user">
+							</figure>
+							<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
+							<blockquote>
+								<p>&ldquo;Far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+									right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
+					</div>
 				</div>
+			</div>
 			<!-- </div> -->
 		</div>
 	</div>
 
 	<div id="gtco-services">
 		<div class="gtco-container">
-			
+
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 					<h2>What We Offer</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor
+						eius.</p>
 				</div>
 			</div>
 
 			<div class="row animate-box">
-				
+
 				<div class="gtco-tabs">
 					<ul class="gtco-tab-nav">
 						<li class="active"><a href="#" data-tab="1"><span class="icon visible-xs"><i class="icon-command"></i></span><span class="hidden-xs">Web Design</span></a></li>
@@ -295,9 +320,12 @@
 							</div>
 							<div class="col-md-6">
 								<h2>Web Design</h2>
-								<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
+								<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas
+									eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis
+									est.</p>
 
-								<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
+								<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique
+									placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
 
 								<div class="row">
 									<div class="col-md-6">
@@ -321,9 +349,12 @@
 							</div>
 							<div class="col-md-6">
 								<h2>Online Marketing</h2>
-								<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
+								<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas
+									eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis
+									est.</p>
 
-								<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
+								<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique
+									placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
 
 								<div class="row">
 									<div class="col-md-6">
@@ -347,9 +378,12 @@
 							</div>
 							<div class="col-md-6">
 								<h2>e-Commerce</h2>
-								<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
+								<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique
+									placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
 
-								<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
+								<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas
+									eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis
+									est.</p>
 								<div class="row">
 									<div class="col-md-6">
 										<h2 class="uppercase">Easy to shop</h2>
@@ -360,7 +394,7 @@
 										<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis</p>
 									</div>
 								</div>
-								
+
 							</div>
 						</div>
 
@@ -372,9 +406,12 @@
 							</div>
 							<div class="col-md-6">
 								<h2>Logo &amp; Branding</h2>
-								<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
+								<p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas
+									eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis
+									est.</p>
 
-								<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
+								<p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique
+									placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
 
 								<div class="row">
 									<div class="col-md-6">
@@ -433,7 +470,8 @@
 			<div class="row row-pb-md">
 				<div class="col-md-4 gtco-widget">
 					<h3>The Company</h3>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa
+						amet.</p>
 					<p><a href="#">Learn More</a></p>
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
@@ -470,7 +508,7 @@
 			<div class="row copyright">
 				<div class="col-md-12">
 					<p class="pull-left">
-						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> 
+						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
 						<small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
 					</p>
 					<!--<p class="pull-right">
@@ -486,8 +524,8 @@
 
 		</div>
 	</footer>
-	</div>
+</div>
 
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
+<div class="gototop js-top">
+	<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+</div>

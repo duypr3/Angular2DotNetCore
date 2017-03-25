@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentComponent } from './student/student.component';
 import { OxygenComponent } from './home/oxygen/oxygen.component';
 import { MentorComponent } from './home/mentor/mentor.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -19,7 +20,7 @@ import { MentorComponent } from './home/mentor/mentor.component';
     LoginComponent,
     NotFoundComponent,
     StudentComponent,    
-    OxygenComponent, MentorComponent
+    OxygenComponent, MentorComponent, SignUpComponent
   ],
   imports: [
     BrowserModule,

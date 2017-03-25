@@ -11,7 +11,7 @@ import { Config }  from './config';
 
 export class AppService {  
 	private headers = new Headers({'Content-Type': 'application/json'});
-  private options = new RequestOptions({ headers: this.headers });
+  /*private options = new RequestOptions({ headers: this.headers });*/
 
   //private apiUrl = 'http://localhost:32760/api/login/AddOrUpdate';  // URL to web api
   apiUrl: string; controllerApi: string; actionApi: string;
@@ -42,56 +42,55 @@ export class AppService {
 
     return this.apiUrl;
   }
-  // Build method //
-  get(actionName: string): Observable<any>{
+
+  buildRequestOption(params?: any): RequestOptions{      
+      let options = new RequestOptions({
+        headers: this.headers
+      });
+
+      if (typeof(params) != 'undefined'){       
+          let paramsURLSearch = new URLSearchParams();
+          for(let key in params) {
+              paramsURLSearch.set(key, params[key]);
+          }
+          options.search = paramsURLSearch;      
+      }
+     
+      return options;
+  }
+
+  //------------- Build method -------------//
+  get(actionName: string, params?: any): Observable<any>{    
     this.setAction(actionName);
     this.buildApiUrl();
+    return this.http.get(this.apiUrl, this.buildRequestOption(params))
+                    .map(this.extractData)
+                    .catch(this.handleError);
 
-    console.log("apiURL ", this.apiUrl);
-    return this.http.get(this.apiUrl)
+  }
+
+  addOrUpdate(actionName: string, data: any, params?: any){
+    this.setAction(actionName);
+    this.buildApiUrl();
+    //let body = JSON.stringify(data);
+    return this.http.post(this.apiUrl, data, this.buildRequestOption(params))
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   
-  getWithParams(controllerName: string, actionName: string, params: string): Observable<any>{
-    this.setController(controllerName);
-    console.log("paramss ",params);
-    let paramsURL = new URLSearchParams(params);
-    console.log("paramURL  ", paramsURL);
-
+  delete(actionName: string, params?: any): Observable<any>{    
     this.setAction(actionName);
-    this.buildApiUrl();
-    console.log("data>>> ",params);
-    return this.http.get(this.apiUrl)
-                    .map(this.extractData)
-                    .catch(this.handleError);
-
-  }
-  addOrUpdate(controllerName: string, actionName: string, data: string): Observable<any>{
-    this.setController(controllerName);
-    this.setAction(actionName);
-    this.buildApiUrl();
-    console.log("data>>> ",data);
+    this.buildApiUrl();    
     //let body = JSON.stringify(data);
-    return this.http.post(this.apiUrl, data, this.options)
-                    .map(this.extractData)
-                    .catch(this.handleError);
-  }
-  delete(controllerName: string, actionName: string): Observable<any>{
-    this.setController(controllerName);
-    this.setAction(actionName);
-    this.buildApiUrl();
-    
-    //let body = JSON.stringify(data);
-    return this.http.post(this.apiUrl, this.options)
+    return this.http.post(this.apiUrl, this.buildRequestOption(params))
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   
   private extractData(res: Response) {
-    console.log('res>> ', res);
+    //console.log('res>> ', res);
     let body = res.json();
-    console.log('body>> ',body);
+    //console.log('body>> ',body);
     return body || { };
   }
 
