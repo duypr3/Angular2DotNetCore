@@ -86,6 +86,8 @@ export class AppService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+  //------------ END BUILD METHOD ---------------//
+
   
   private extractData(res: Response) {
     //console.log('res>> ', res);
