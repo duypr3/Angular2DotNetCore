@@ -26,7 +26,7 @@ namespace Entity.Migrations.Default
                 name: "Logins",
                 columns: table => new
                 {
-                    ID = table.Column<long>(nullable: false)
+                    ID = table.Column<Int64>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Password = table.Column<string>(nullable: true),
                     Username = table.Column<string>(nullable: true)

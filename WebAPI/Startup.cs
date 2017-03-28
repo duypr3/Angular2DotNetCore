@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebAPI.Base;
+using WebAPI.Common;
+using WebAPI.src.LoginComponent;
 
 namespace WebAPI
 {
@@ -46,9 +49,10 @@ namespace WebAPI
             services.AddDbContext<DataMiningDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataMiningConnection")));
 
-            services.AddSingleton<IUnitOfWork, UnitOfWork>();
-
-            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IDbContextFactory, DbContextFactory>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(ILoginService), typeof(LoginService));
+            //services.AddScoped<ILoginService, LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

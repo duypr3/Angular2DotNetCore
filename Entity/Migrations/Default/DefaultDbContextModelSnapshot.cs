@@ -51,6 +51,10 @@ namespace Entity.Migrations.Default
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ConfirmPassword");
+
+                    b.Property<string>("Email");
+
                     b.Property<string>("Password");
 
                     b.Property<string>("Username");

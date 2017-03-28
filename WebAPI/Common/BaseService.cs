@@ -15,18 +15,13 @@ namespace WebAPI.Base
 
         private readonly IBaseRepository<T> _repo;
         private readonly IUnitOfWork _unitOfWork;
-        private bool _autoSaveChange = true;
         protected DbContext _dbContext;
 
-        public BaseService(IUnitOfWork unitOfWork, bool? autoSaveChange = true)
+        public BaseService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _repo = unitOfWork.GetRepository<T>();
             _dbContext = unitOfWork.GetDbContext();
-            if (autoSaveChange.HasValue)
-            {
-                _autoSaveChange = autoSaveChange.Value;
-            }
         }
 
         /// <summary>
@@ -46,7 +41,7 @@ namespace WebAPI.Base
             return _repo.Get(filter, includeProperties);
         }
 
-        public IQueryable<T> GetAll(string s)
+        public IQueryable<T> GetAll(string s = "")
         {
             return _repo.GetAll(s);
         }
@@ -56,58 +51,34 @@ namespace WebAPI.Base
             return _repo.GetByID(ID);
         }
 
-        public void Insert(T o)
+        public async Task Insert(T o)
         {
-            _repo.Insert(o);
-            if (_autoSaveChange)
-            {
-                _dbContext.SaveChanges();
-            }
+            await _repo.Insert(o);
         }
 
-        public void Update(T o)
+        public async Task Update(T o)
         {
-            _repo.Update(o);
-            if (_autoSaveChange)
-            {
-                _dbContext.SaveChanges();
-            }
+            await _repo.Update(o);
         }
 
-        public void Update(object primaryKey, T o)
+        public async Task Update(object primaryKey, T o)
         {
-            _repo.Update(primaryKey, o);
-            if (_autoSaveChange)
-            {
-                _dbContext.SaveChanges();
-            }
+            await _repo.Update(primaryKey, o);
         }
 
-        public void Delete(object primaryKey)
+        public async Task Delete(object primaryKey)
         {
-            _repo.Delete(primaryKey);
-            if (_autoSaveChange)
-            {
-                _dbContext.SaveChanges();
-            }
+            await _repo.Delete(primaryKey);
         }
 
-        public void Delete(T o)
+        public async Task Delete(T o)
         {
-            _repo.Delete(o);
-            if (_autoSaveChange)
-            {
-                _dbContext.SaveChanges();
-            }
+            await _repo.Delete(o);
         }
 
-        public void Delete(Expression<Func<T, bool>> filter)
+        public async Task Delete(Expression<Func<T, bool>> filter, string includeProperties = "")
         {
-            _repo.Delete(filter);
-            if (_autoSaveChange)
-            {
-                _dbContext.SaveChanges();
-            }
+            await _repo.Delete(filter, includeProperties);
         }
 
         #endregion BaseRepository

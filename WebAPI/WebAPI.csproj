@@ -45,7 +45,6 @@
 
   <ItemGroup>
     <Folder Include="Base\" />
-    <Folder Include="src\Login\" />
     <Folder Include="src\Student\" />
   </ItemGroup>
 
