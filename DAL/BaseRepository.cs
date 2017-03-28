@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -22,19 +23,25 @@ namespace DAL
 
         #region Implementation
 
-        public virtual void Insert(T entity)
+        public virtual async Task Insert(T entity)
         {
-            if (entity == null)
+            try
             {
-                throw new ArgumentNullException("entity");
+                _dbContext.Add(entity);
+                await _dbContext.SaveChangesAsync();
             }
-            _dbSet.Add(entity);
+            catch(DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+               /* ModelState.AddModelError("", "Unable to save changes. " +
+                "Try again, and if the problem persists " +
+                "see your system administrator.");*/
+            }            
         }
 
         public virtual IQueryable<T> Get(Expression<Func<T, bool>> filter = null, string includeProperties = "")
         {
             IQueryable<T> query = _dbSet.AsNoTracking();
-
             if (filter != null)
             {
                 query = query.Where(filter);
@@ -47,12 +54,24 @@ namespace DAL
                     query = query.Include(includeProperty);
                 }
             }
+            
             return query;
         }
 
         public virtual T GetByID(object id)
         {
-            return _dbSet.Find(id);
+            try
+            {
+                return _dbSet.Find(id); ;
+            }
+            catch (Exception ex)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                /* ModelState.AddModelError("", "Unable to save changes. " +
+                 "Try again, and if the problem persists " +
+                 "see your system administrator.");*/
+                return null;
+            }            
         }
 
         public IQueryable<T> GetAll(string includeProperties = "")
@@ -70,47 +89,53 @@ namespace DAL
             return query;
         }
 
-        public virtual void Update(T entity)
+        public virtual async Task Update(T entity)
         {
-            if (entity == null)
+            try
             {
-                throw new ArgumentNullException("entity");
+                _dbContext.Update(entity);
+                _dbContext.Entry(entity).State = EntityState.Modified;   // for confirm state of entity is Modified -> _dbSet update state entity.
+
+                await _dbContext.SaveChangesAsync();
             }
-            _dbSet.Attach(entity);
-            _dbContext.Entry(entity).State = EntityState.Modified;   // for confirm state of entity is Modified -> _dbSet update state entity.
+            catch (DbUpdateException /* ex */)
+            {
+                /*//Log the error (uncomment ex variable name and write a log.)
+                ModelState.AddModelError("", "Unable to save changes. " +
+                "Try again, and if the problem persists, " +
+                "see your system administrator.");*/
+            }
+            
         }
 
-        public virtual void Update(object primaryKey, T entity)
+        public virtual async Task Update(object primaryKey, T entity)
         {
             T dbEntity = this.GetByID(primaryKey);
-            this.Update(dbEntity);
+            await this.Update(dbEntity);
         }
 
-        public virtual void Delete(object primaryKey)
+        public virtual async Task Delete(object primaryKey)
         {
-            T entity = _dbSet.Find(primaryKey);
-            Delete(entity);
+            T dbEntity = this.GetByID(primaryKey);
+            await this.Delete(dbEntity);
         }
 
-        public virtual void Delete(T entity)
-        {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
+        public virtual async Task Delete(T entity)
+        {            
             if (_dbContext.Entry(entity).State == EntityState.Detached) // check while processing server if entity modified -> attach entity into _dbSet again.
             {
                 _dbSet.Attach(entity);
             }
             _dbSet.Remove(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public virtual void Delete(Expression<Func<T, bool>> filter)
+        public virtual async Task Delete(Expression<Func<T, bool>> filter = null, string includeProperties = "")
         {
-            var objects = _dbSet.Where<T>(filter).AsEnumerable();
-            foreach (var e in objects)
+            IQueryable<T> query = this.Get(filter, includeProperties);
+            foreach (var e in query)
             {
-                this.Delete(e);
+                await this.Delete(e);
             }
         }
 

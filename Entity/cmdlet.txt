@@ -1,7 +1,7 @@
 ﻿
 Add-Migration InitMigration -OutputDir Migrations\Default -Context DefaultDbContext
 
-Add-Migration FirstMigrationDefault -OutputDir Migrations\DataMining -Context DataMiningDbContext
+Add-Migration InitMigration -OutputDir Migrations\DataMining -Context DataMiningDbContext
 
 
 
