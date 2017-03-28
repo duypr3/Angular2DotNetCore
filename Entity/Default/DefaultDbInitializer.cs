@@ -12,7 +12,7 @@ namespace Entity
         {
             context.Database.EnsureCreated();
 
-            if (!context.Teachers.Any())
+            /*if (!context.Teachers.Any())
             {
                 var teachers = new Teacher[]
                 {
@@ -69,7 +69,7 @@ namespace Entity
                     context.Students.Add(s);
                 }
                 context.SaveChanges();
-            }
+            }*/
 
         }
     }

@@ -8,8 +8,8 @@ using Entity;
 namespace Entity.Migrations.Default
 {
     [DbContext(typeof(DefaultDbContext))]
-    [Migration("20170320020400_InitMigration")]
-    partial class InitMigration
+    [Migration("20170328162024_AddPropertyLogin")]
+    partial class AddPropertyLogin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,6 +52,10 @@ namespace Entity.Migrations.Default
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ConfirmPassword");
+
+                    b.Property<string>("Email");
+
                     b.Property<string>("Password");
 
                     b.Property<string>("Username");
@@ -66,13 +70,15 @@ namespace Entity.Migrations.Default
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("ClassID");
+                    b.Property<long>("ClassID");
 
                     b.Property<string>("Email");
 
                     b.Property<DateTime>("EnrollmentDate");
 
                     b.Property<string>("FirstMidName");
+
+                    b.Property<string>("FullName");
 
                     b.Property<string>("LastName");
 
@@ -93,9 +99,10 @@ namespace Entity.Migrations.Default
 
             modelBuilder.Entity("Entity.Student", b =>
                 {
-                    b.HasOne("Entity.Class")
+                    b.HasOne("Entity.Class", "Class")
                         .WithMany("Students")
-                        .HasForeignKey("ClassID");
+                        .HasForeignKey("ClassID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

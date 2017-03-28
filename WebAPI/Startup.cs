@@ -39,9 +39,13 @@ namespace WebAPI
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddCors();  // before add MVC
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                                                                    .AllowAnyMethod()
+                                                                     .AllowAnyHeader()));  // before add MVC
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling =
+                                                            Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 
             services.AddDbContext<DefaultDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -73,14 +77,14 @@ namespace WebAPI
             }
             app.UseStatusCodePages(); //return 500 (Internal Server Error) or 404 (Not Found)
             */
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
 
 
             /*app.UseApplicationInsightsRequestTelemetry();
 
             app.UseApplicationInsightsExceptionTelemetry();*/
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());  
+            app.UseCors("AllowAll");  
 
             app.UseMvc(routes =>
             {

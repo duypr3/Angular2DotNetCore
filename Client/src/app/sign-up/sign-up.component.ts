@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
   user = new User();
   
   ngOnInit() {
-      console.log('INIT >>user>> ', this.user);    
+      //console.log('INIT >>user>> ', this.user);    
   }
 
   createAccount(){

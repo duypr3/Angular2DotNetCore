@@ -72,8 +72,8 @@ export class AppService {
   addOrUpdate(actionName: string, data: any, params?: any){
     this.setAction(actionName);
     this.buildApiUrl();
-    //let body = JSON.stringify(data);
-    return this.http.post(this.apiUrl, data, this.buildRequestOption(params))
+    let body = JSON.stringify(data);
+    return this.http.post(this.apiUrl, body, this.buildRequestOption(params))
                     .map(this.extractData)
                     .catch(this.handleError);
   }
