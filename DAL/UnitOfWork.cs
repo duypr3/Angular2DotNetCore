@@ -1,5 +1,6 @@
 ﻿using Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace DAL
 {
@@ -9,11 +10,13 @@ namespace DAL
 
         private DbContext _dbContext;
         private readonly IDbContextFactory _contextFactory;
+        private readonly ILogger _logger;
 
-        public UnitOfWork(IDbContextFactory contextFactory)
+        public UnitOfWork(IDbContextFactory contextFactory, ILogger logger)
         {
             _contextFactory = contextFactory;
             _dbContext = contextFactory.GetDefaultDbContext();
+            _logger = logger;
         }
 
         #endregion Init
@@ -26,17 +29,17 @@ namespace DAL
 
         private IBaseRepository<Student> StudentRepository
         {
-            get { return _studentRepository ?? (_studentRepository = new BaseRepository<Student>(_dbContext)); }
+            get { return _studentRepository ?? (_studentRepository = new BaseRepository<Student>(_dbContext, _logger as ILogger<Student>));}
         }
 
         private IBaseRepository<Class> ClassRepository
         {
-            get { return _classRepository ?? (_classRepository = new BaseRepository<Class>(_dbContext)); }
+            get { return _classRepository ?? (_classRepository = new BaseRepository<Class>(_dbContext, _logger as ILogger<Class>)); }
         }
 
         private IBaseRepository<Login> LoginRepository
         {
-            get { return _loginRepository ?? (_loginRepository = new BaseRepository<Login>(_dbContext)); }
+            get { return _loginRepository ?? (_loginRepository = new BaseRepository<Login>(_dbContext, _logger as ILogger<Login>)); }
         }
 
         public IBaseRepository<T> GetRepository<T>()

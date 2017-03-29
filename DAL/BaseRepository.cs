@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -12,11 +13,13 @@ namespace DAL
 
         protected DbContext _dbContext;
         protected DbSet<T> _dbSet;
+        private readonly ILogger _logger;
 
-        public BaseRepository(DbContext dbContext)
+        public BaseRepository(DbContext dbContext, ILogger<T> logger)
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<T>();
+            _logger = logger;
         }
 
         #endregion Init
@@ -30,12 +33,9 @@ namespace DAL
                 _dbContext.Add(entity);
                 await _dbContext.SaveChangesAsync();
             }
-            catch(DbUpdateException /* ex */)
+            catch(DbUpdateException ex)
             {
-                //Log the error (uncomment ex variable name and write a log.
-               /* ModelState.AddModelError("", "Unable to save changes. " +
-                "Try again, and if the problem persists " +
-                "see your system administrator.");*/
+                _logger.LogError(null, ex, "INSERT ERROR");
             }            
         }
 
@@ -66,10 +66,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                //Log the error (uncomment ex variable name and write a log.
-                /* ModelState.AddModelError("", "Unable to save changes. " +
-                 "Try again, and if the problem persists " +
-                 "see your system administrator.");*/
+                _logger.LogError(null, ex, "GetByID ERROR");
                 return null;
             }            
         }
@@ -98,12 +95,9 @@ namespace DAL
 
                 await _dbContext.SaveChangesAsync();
             }
-            catch (DbUpdateException /* ex */)
+            catch (DbUpdateException ex)
             {
-                /*//Log the error (uncomment ex variable name and write a log.)
-                ModelState.AddModelError("", "Unable to save changes. " +
-                "Try again, and if the problem persists, " +
-                "see your system administrator.");*/
+                _logger.LogError(null, ex, "Update ERROR");
             }
             
         }

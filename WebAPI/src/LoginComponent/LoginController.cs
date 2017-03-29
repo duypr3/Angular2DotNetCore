@@ -5,8 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebAPI.src.LoginComponent
-{
-    [Route("api/[controller]/[action]")]
+{    
     public class LoginController : Controller
     {
         private readonly ILoginService _loginService;
