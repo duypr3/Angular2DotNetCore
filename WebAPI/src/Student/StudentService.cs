@@ -8,7 +8,7 @@ using WebAPI.Base;
 
 namespace WebAPI.src
 {
-    public class StudentService : BaseService<Student>, IStudentService
+    /*public class StudentService : BaseService<Student>, IStudentService
     {
         private readonly IBaseRepository<Student> _studentRepo;
         public StudentService(IUnitOfWork unitOfWork) : base(unitOfWork)
@@ -23,5 +23,5 @@ namespace WebAPI.src
         {
             return _studentRepo.Get(n => n.FirstMidName.Contains(name) || n.LastName.Contains(name)).ToList();
         }
-    }
+    }*/
 }

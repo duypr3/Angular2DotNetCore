@@ -21,34 +21,31 @@ namespace WebAPI
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
 
-            if (env.IsEnvironment("Development"))
+            /*if (env.IsEnvironment("Development"))
             {
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
-
-            builder.AddEnvironmentVariables();
+            */
             Configuration = builder.Build();
         }
 
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddApplicationInsightsTelemetry(Configuration);
+            //services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));  // before add MVC
 
             /*services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling =
                                                             Newtonsoft.Json.ReferenceLoopHandling.Ignore);*/
-
-            services.AddMvc();
-
 
             services.AddDbContext<DefaultDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -56,13 +53,15 @@ namespace WebAPI
             services.AddDbContext<DataMiningDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataMiningConnection")));
 
+            services.AddMvc();
+
             /*services.AddScoped<IDbContextFactory, DbContextFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(ILoginService), typeof(LoginService));*/
             //services.AddScoped<ILoginService, LoginService>();
 
 
-            return services.AddDryIoc<Bootstrap>();
+            //return services.AddDryIoc<Bootstrap>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -73,7 +72,8 @@ namespace WebAPI
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
             //loggerFactory.add("Logs/myapp-{Date}.txt"); ??? Add log in DB.
-            /* if (env.IsDevelopment())
+
+             if (env.IsDevelopment())
              {
                  app.UseDeveloperExceptionPage();
                  app.UseBrowserLink();
@@ -83,7 +83,7 @@ namespace WebAPI
                  app.UseExceptionHandler("/Home/Error");
              }
              app.UseStatusCodePages(); //return 500 (Internal Server Error) or 404 (Not Found)
-             */
+             
             //app.UseStaticFiles();
 
 

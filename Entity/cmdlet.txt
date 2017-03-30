@@ -1,4 +1,11 @@
-﻿
+﻿Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+Install-Package Microsoft.EntityFrameworkCore.Tools 
+
+Restart VS
+
+
+
 Add-Migration InitMigration -OutputDir Migrations\Default -Context DefaultDbContext
 
 Add-Migration InitMigration -OutputDir Migrations\DataMining -Context DataMiningDbContext

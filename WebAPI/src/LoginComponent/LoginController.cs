@@ -12,11 +12,11 @@ namespace WebAPI.src.LoginComponent
     {
         private readonly ILoginService _loginService;
         private readonly ILogger _logger;
+        private readonly DefaultDbContext _defaultDbContext;
 
-        public LoginController(ILoginService loginService, ILogger<LoginController> logger)
-        {
-            _loginService = loginService;
-            _logger = logger;
+        public LoginController(DefaultDbContext defaultDbContext)
+        {           
+            _defaultDbContext = defaultDbContext;
         }
 
         [HttpGet]
@@ -39,7 +39,10 @@ namespace WebAPI.src.LoginComponent
         {
             //var test = param1.ToString();
             //GetWithParams(test, param2);
-            _loginService.Insert(login);
+            // _loginService.Insert(login);
+
+            _defaultDbContext.Logins.Add(login);
+            _defaultDbContext.SaveChanges();
            // GetAll();
             return login;
         }
