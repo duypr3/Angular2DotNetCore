@@ -24,13 +24,7 @@ namespace WebAPI
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-
-            /*if (env.IsEnvironment("Development"))
-            {
-                // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-                builder.AddApplicationInsightsSettings(developerMode: true);
-            }
-            */
+            
             Configuration = builder.Build();
         }
 
@@ -39,11 +33,7 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            //services.AddApplicationInsightsTelemetry(Configuration);
-
-            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));  // before add MVC
-
+           
             /*services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling =
                                                             Newtonsoft.Json.ReferenceLoopHandling.Ignore);*/
 
@@ -53,23 +43,25 @@ namespace WebAPI
             services.AddDbContext<DataMiningDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataMiningConnection")));
 
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));  // before add MVC
+
             services.AddMvc();
 
-            /*services.AddScoped<IDbContextFactory, DbContextFactory>();
+            services.AddScoped<IDbContextFactory, DbContextFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(ILoginService), typeof(LoginService));*/
+            services.AddSingleton(typeof(ILoginService), typeof(LoginService));
+
             //services.AddScoped<ILoginService, LoginService>();
 
 
-            //return services.AddDryIoc<Bootstrap>();
+            //return services.AddDryIoc<Bootstrap>();  // NOT YET USING DRYIOC
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory
                                 , DefaultDbContext defaultDbContext, DataMiningDbContext dataMiningDbContext)
         {
-            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddConsole();
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             //loggerFactory.add("Logs/myapp-{Date}.txt"); ??? Add log in DB.
 

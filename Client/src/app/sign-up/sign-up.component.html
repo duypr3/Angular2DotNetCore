@@ -26,6 +26,8 @@
       </div>
       <div style="text-align: center;">
         <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid" (click)="createWithParams()">Login</button>
+        <button type="button" class="btn btn-success" (click)="deleteSignUp()">Delete</button>
+        <button type="button" class="btn btn-success" (click)="getByInfo()">Get</button>
       </div>
     </form>
   </div>

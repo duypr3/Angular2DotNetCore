@@ -55,7 +55,7 @@ export class AppService {
           }
           options.search = paramsURLSearch;      
       }
-     
+      console.log("RequestOptions>>>> ",options);
       return options;
   }
 
@@ -72,18 +72,19 @@ export class AppService {
   addOrUpdate(actionName: string, data: any, params?: any){
     this.setAction(actionName);
     this.buildApiUrl();
-    console.log('api>> ', this.apiUrl);
+    //console.log('api>> ', this.apiUrl);
+     console.log("parasm>>> ", this.buildRequestOption(params));
     let body = JSON.stringify(data);
     return this.http.post(this.apiUrl, body, this.buildRequestOption(params))
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   
-  delete(actionName: string, params?: any): Observable<any>{    
+  delete(actionName: string, params?: any){    
     this.setAction(actionName);
-    this.buildApiUrl();    
+    this.buildApiUrl();
     //let body = JSON.stringify(data);
-    return this.http.post(this.apiUrl, this.buildRequestOption(params))
+    return this.http.post(this.apiUrl, {}, this.buildRequestOption(params))
                     .map(this.extractData)
                     .catch(this.handleError);
   }

@@ -1,4 +1,4 @@
 export class Config {
-	domainApi: string = "http://localhost:33307";
+	domainApi: string = "http://localhost:11111";
 	serviceBase: string = "api";
 }

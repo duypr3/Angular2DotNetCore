@@ -12,11 +12,12 @@ namespace WebAPI.src.LoginComponent
     {
         private readonly ILoginService _loginService;
         private readonly ILogger _logger;
-        private readonly DefaultDbContext _defaultDbContext;
 
-        public LoginController(DefaultDbContext defaultDbContext)
-        {           
-            _defaultDbContext = defaultDbContext;
+        // When using ILogger always add Controller into its.
+        public LoginController(ILoginService loginService, ILogger<LoginController> logger)
+        {
+            _loginService = loginService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -35,15 +36,13 @@ namespace WebAPI.src.LoginComponent
         }
 
         [HttpPost]
-        public Login CreateAccountWithParams([FromBody] Login login, int param1, string param2)
+        public async Task<Login> CreateAccountWithParams([FromBody] Login login, int param1, string param2)
         {
             //var test = param1.ToString();
             //GetWithParams(test, param2);
-            // _loginService.Insert(login);
-
-            _defaultDbContext.Logins.Add(login);
-            _defaultDbContext.SaveChanges();
-           // GetAll();
+             await _loginService.Insert(login);
+           
+             GetAll();
             return login;
         }
 
@@ -66,9 +65,9 @@ namespace WebAPI.src.LoginComponent
         }
 
         [HttpPost]
-        public string Delete(string username)
+        public async Task<string> Delete(string username)
         {
-            _loginService.Delete(n => n.Username.Contains(username));
+            await _loginService.Delete(n => n.Username.Contains(username));
             return username;
         }
 

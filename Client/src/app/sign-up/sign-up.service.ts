@@ -20,6 +20,13 @@ export class SignUpService extends AppService {
 	createWithParams(user: any, params: any){
 		return this.addOrUpdate("CreateAccountWithParams", user, params);
 	}
+	deleteSignUp(params?: any){
+		return this.delete("Delete", params);
+	}
+
+	getByInfo(params: any){
+		return this.get("GetByInfo",params);
+	}
 	getAll(): any{
 		return this.get("get");
 	}

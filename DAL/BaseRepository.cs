@@ -114,11 +114,12 @@ namespace DAL
         }
 
         public virtual async Task Delete(T entity)
-        {            
+        {
             if (_dbContext.Entry(entity).State == EntityState.Detached) // check while processing server if entity modified -> attach entity into _dbSet again.
             {
                 _dbSet.Attach(entity);
             }
+            _dbContext.Entry(entity).State = EntityState.Deleted;
             _dbSet.Remove(entity);
             await _dbContext.SaveChangesAsync();
         }

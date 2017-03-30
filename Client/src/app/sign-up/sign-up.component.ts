@@ -60,4 +60,29 @@ export class SignUpComponent implements OnInit {
      console.log('user>> ', this.user);
      this.createWithParams();
   }
+
+  deleteSignUp(){
+    let newparam : any = {
+      username: 'username'
+    }
+    this.signUpService.deleteSignUp(newparam).subscribe(
+	             result => {
+	             	console.log('reuslt>>> ', result); 
+	             },
+	             error =>  {console.error("[ deleteSignUp ]: " + <any>error);}
+	         );
+  }
+  getByInfo(){
+    let newparam : any = {
+      username: 'registers1111',
+      password: 'password11'
+    }
+    //let username: string = 'registers';
+    this.signUpService.getByInfo(newparam).subscribe(
+	             result => {
+	             	console.log('reuslt>>> ', result); 
+	             },
+	             error =>  {console.error("[ deleteSignUp ]: " + <any>error);}
+	         );
+  }
 }

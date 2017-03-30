@@ -14,10 +14,12 @@ namespace WebAPI.Base
         #region init
 
         private readonly IBaseRepository<T> _repo;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public BaseService(IBaseRepository<T> repo)
+        public BaseService(IUnitOfWork unitOfWork)
         {
-            _repo = repo;
+            _unitOfWork = unitOfWork;
+            _repo = unitOfWork.GetRepository<T>();
         }
 
         #endregion init

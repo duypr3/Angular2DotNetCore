@@ -9,6 +9,6 @@ namespace WebAPI.src.LoginComponent
 {
     public interface ILoginService : IBaseService<Login>
     {
-        
-    }   
+
+    }
 }

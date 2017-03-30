@@ -10,7 +10,6 @@ namespace WebAPI
         {
             r.Register<IDbContextFactory, DbContextFactory>(Reuse.InWebRequest);
             r.Register<IUnitOfWork, UnitOfWork>(Reuse.InWebRequest);
-            r.Register<ILoginRepository, LoginRepository>(Reuse.InWebRequest);
             r.Register<ILoginService, LoginService>(Reuse.InWebRequest);
 
             // r.RegisterMany(new[] { typeof(LoginService) }, nonPublicServiceTypes: true);
