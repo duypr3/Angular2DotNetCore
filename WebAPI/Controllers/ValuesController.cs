@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 
 namespace WebAPI.Controllers
-{    
+{
+    [Route("api/[controller]/[action]")]
     public class ValuesController : Controller
     {
         // GET api/values

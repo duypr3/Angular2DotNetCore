@@ -13,14 +13,13 @@ namespace DAL
 
         protected DbContext _dbContext;
         protected DbSet<T> _dbSet;
-        private readonly ILogger _logger;
 
-        public BaseRepository(DbContext dbContext, ILogger<T> logger)
+        public BaseRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<T>();
-            _logger = logger;
         }
+
 
         #endregion Init
 
@@ -33,9 +32,9 @@ namespace DAL
                 _dbContext.Add(entity);
                 await _dbContext.SaveChangesAsync();
             }
-            catch(DbUpdateException ex)
+            catch(Exception ex)
             {
-                _logger.LogError(null, ex, "INSERT ERROR");
+                //_logger.LogError(null, ex, "INSERT ERROR");
             }            
         }
 
@@ -66,7 +65,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                _logger.LogError(null, ex, "GetByID ERROR");
+               // _logger.LogError(null, ex, "GetByID ERROR");
                 return null;
             }            
         }
@@ -95,9 +94,9 @@ namespace DAL
 
                 await _dbContext.SaveChangesAsync();
             }
-            catch (DbUpdateException ex)
+            catch (Exception ex)
             {
-                _logger.LogError(null, ex, "Update ERROR");
+                //_logger.LogError(null, ex, "Update ERROR");
             }
             
         }

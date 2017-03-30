@@ -10,13 +10,11 @@ namespace DAL
 
         private DbContext _dbContext;
         private readonly IDbContextFactory _contextFactory;
-        private readonly ILogger _logger;
 
-        public UnitOfWork(IDbContextFactory contextFactory, ILogger logger)
+        public UnitOfWork(IDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
             _dbContext = contextFactory.GetDefaultDbContext();
-            _logger = logger;
         }
 
         #endregion Init
@@ -29,17 +27,17 @@ namespace DAL
 
         private IBaseRepository<Student> StudentRepository
         {
-            get { return _studentRepository ?? (_studentRepository = new BaseRepository<Student>(_dbContext, _logger as ILogger<Student>));}
+            get { return _studentRepository ?? (_studentRepository = new BaseRepository<Student>(_dbContext)); }
         }
 
         private IBaseRepository<Class> ClassRepository
         {
-            get { return _classRepository ?? (_classRepository = new BaseRepository<Class>(_dbContext, _logger as ILogger<Class>)); }
+            get { return _classRepository ?? (_classRepository = new BaseRepository<Class>(_dbContext)); }
         }
 
         private IBaseRepository<Login> LoginRepository
         {
-            get { return _loginRepository ?? (_loginRepository = new BaseRepository<Login>(_dbContext, _logger as ILogger<Login>)); }
+            get { return _loginRepository ?? (_loginRepository = new BaseRepository<Login>(_dbContext)); }
         }
 
         public IBaseRepository<T> GetRepository<T>()

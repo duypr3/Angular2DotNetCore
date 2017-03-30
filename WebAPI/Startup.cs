@@ -1,4 +1,6 @@
 ﻿using DAL;
+using DryIoc;
+using DryIoc.Microsoft.DependencyInjection;
 using Entity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 using WebAPI.Base;
 using WebAPI.Common;
 using WebAPI.src.LoginComponent;
@@ -34,15 +37,17 @@ namespace WebAPI
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));  // before add MVC
 
-            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling =
-                                                            Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            /*services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling =
+                                                            Newtonsoft.Json.ReferenceLoopHandling.Ignore);*/
+
+            services.AddMvc();
 
 
             services.AddDbContext<DefaultDbContext>(options =>
@@ -51,10 +56,13 @@ namespace WebAPI
             services.AddDbContext<DataMiningDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataMiningConnection")));
 
-            services.AddTransient<IDbContextFactory, DbContextFactory>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(ILoginService), typeof(LoginService));
+            /*services.AddScoped<IDbContextFactory, DbContextFactory>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(ILoginService), typeof(LoginService));*/
             //services.AddScoped<ILoginService, LoginService>();
+
+
+            return services.AddDryIoc<Bootstrap>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -64,18 +72,18 @@ namespace WebAPI
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
-
-           /* if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-            app.UseStatusCodePages(); //return 500 (Internal Server Error) or 404 (Not Found)
-            */
+            //loggerFactory.add("Logs/myapp-{Date}.txt"); ??? Add log in DB.
+            /* if (env.IsDevelopment())
+             {
+                 app.UseDeveloperExceptionPage();
+                 app.UseBrowserLink();
+             }
+             else
+             {
+                 app.UseExceptionHandler("/Home/Error");
+             }
+             app.UseStatusCodePages(); //return 500 (Internal Server Error) or 404 (Not Found)
+             */
             //app.UseStaticFiles();
 
 
@@ -83,7 +91,7 @@ namespace WebAPI
 
             app.UseApplicationInsightsExceptionTelemetry();*/
 
-            app.UseCors("AllowAll");  
+            app.UseCors("AllowAll");
 
             app.UseMvc(routes =>
             {
@@ -93,6 +101,18 @@ namespace WebAPI
             });
 
             DefaultDbInitializer.Initialize(defaultDbContext);
+        }        
+
+    }
+
+    public static class DI
+    {
+        public static IServiceProvider AddDryIoc<TCompositionRoot>(this IServiceCollection services)
+        {
+            var container = new Container().WithDependencyInjectionAdapter(services);
+            container.RegisterMany<TCompositionRoot>();
+            container.Resolve<TCompositionRoot>();
+            return container.Resolve<IServiceProvider>();
         }
     }
 }

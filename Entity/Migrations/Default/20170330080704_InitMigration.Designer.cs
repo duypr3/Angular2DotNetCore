@@ -8,8 +8,8 @@ using Entity;
 namespace Entity.Migrations.Default
 {
     [DbContext(typeof(DefaultDbContext))]
-    [Migration("20170328162024_AddPropertyLogin")]
-    partial class AddPropertyLogin
+    [Migration("20170330080704_InitMigration")]
+    partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -10,8 +10,8 @@ namespace DAL
    
         public DbContextFactory(DefaultDbContext defaultDbContext, DataMiningDbContext dataMiningDbContext)
         {
-            _defaultDbContext = _defaultDbContext ?? defaultDbContext;
-            _dataMiningDbContext = _dataMiningDbContext ?? dataMiningDbContext;
+            _defaultDbContext = defaultDbContext;
+            _dataMiningDbContext = dataMiningDbContext;
         }
 
         public DbContext GetDefaultDbContext()

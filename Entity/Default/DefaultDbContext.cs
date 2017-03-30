@@ -11,8 +11,8 @@ namespace Entity
             //this.Configuration.AutoDetectChangesEnabled = false;
         }
         */
-        public DefaultDbContext(DbContextOptions<DefaultDbContext> options)
-             : base(options){ }
+        public DefaultDbContext(DbContextOptions<DefaultDbContext> options) : base(options) { }
+
         public DbSet<Student> Students { get; set; }
         public DbSet<Class> Classes { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
