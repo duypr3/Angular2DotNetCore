@@ -49,7 +49,7 @@ namespace WebAPI
 
             services.AddScoped<IDbContextFactory, DbContextFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddSingleton(typeof(ILoginService), typeof(LoginService));
+            services.AddScoped(typeof(ILoginService), typeof(LoginService));
 
             //services.AddScoped<ILoginService, LoginService>();
 

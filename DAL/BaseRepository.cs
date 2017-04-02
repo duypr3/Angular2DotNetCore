@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -126,7 +127,7 @@ namespace DAL
 
         public virtual async Task Delete(Expression<Func<T, bool>> filter = null, string includeProperties = "")
         {
-            IQueryable<T> query = this.Get(filter, includeProperties);
+            IList<T> query = this.Get(filter, includeProperties).ToList();
             foreach (var e in query)
             {
                 await this.Delete(e);

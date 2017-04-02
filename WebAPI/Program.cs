@@ -14,7 +14,7 @@ namespace WebAPI
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                //.UseUrls("http://*:5000")
+                .UseUrls("http://*:4200")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()

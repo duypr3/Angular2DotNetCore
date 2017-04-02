@@ -63,7 +63,7 @@ export class SignUpComponent implements OnInit {
 
   deleteSignUp(){
     let newparam : any = {
-      username: 'username'
+      username: ''
     }
     this.signUpService.deleteSignUp(newparam).subscribe(
 	             result => {

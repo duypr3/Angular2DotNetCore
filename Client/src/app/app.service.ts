@@ -94,7 +94,7 @@ export class AppService {
   private extractData(res: Response) {
     //console.log('res>> ', res);
     let body = res.json();
-    //console.log('body>> ',body);
+    console.log('body>> ',body);
     return body || { };
   }
 

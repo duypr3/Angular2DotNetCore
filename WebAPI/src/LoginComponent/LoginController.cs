@@ -67,7 +67,7 @@ namespace WebAPI.src.LoginComponent
         [HttpPost]
         public async Task<string> Delete(string username)
         {
-            await _loginService.Delete(n => n.Username.Contains(username));
+            await _loginService.Delete(n => n.Username.Equals(username));
             return username;
         }
 
