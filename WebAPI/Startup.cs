@@ -4,6 +4,7 @@ using DryIoc.Microsoft.DependencyInjection;
 using Entity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,6 +48,16 @@ namespace WebAPI
 
             services.AddMvc();
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.CookieHttpOnly = true;
+            });
+
+
+            services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
             services.AddScoped<IDbContextFactory, DbContextFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(ILoginService), typeof(LoginService));
@@ -84,6 +95,8 @@ namespace WebAPI
             app.UseApplicationInsightsExceptionTelemetry();*/
 
             app.UseCors("AllowAll");
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
