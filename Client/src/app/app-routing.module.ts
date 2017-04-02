@@ -10,7 +10,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
 	
 	{ path: 'home',  component: OxygenComponent },
-	{ path: '',   redirectTo: '/home', pathMatch: 'full' },
+	{ path: '', redirectTo: '/home', pathMatch: 'full' },
 	{ path: '**', component: NotFoundComponent }
 
 ];

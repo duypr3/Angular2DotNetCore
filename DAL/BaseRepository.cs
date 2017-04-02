@@ -21,7 +21,6 @@ namespace DAL
             _dbSet = _dbContext.Set<T>();
         }
 
-
         #endregion Init
 
         #region Implementation
@@ -71,7 +70,7 @@ namespace DAL
             }            
         }
 
-        public IQueryable<T> GetAll(string includeProperties = "")
+        public virtual IQueryable<T> GetAll(string includeProperties = "")
         {
             IQueryable<T> query = _dbSet.AsNoTracking();
 

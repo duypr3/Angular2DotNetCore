@@ -41,27 +41,25 @@ namespace WebAPI.src.LoginComponent
             //var test = param1.ToString();
             //GetWithParams(test, param2);
              await _loginService.Insert(login);
-           
-             GetAll();
             return login;
         }
 
         [HttpGet]
-        public IList<Login> GetWithParams(string username, string password)
+        public IQueryable<Login> GetWithParams(string username, string password)
         {
-            return _loginService.GetAll().ToList();
+            return _loginService.GetAll();
         }
 
         [HttpGet]
-        public IList<Login> GetAll()
+        public IQueryable<Login> GetAll()
         {
-            return _loginService.GetAll().ToList();
+            return _loginService.GetAll().Take(20).Skip(2);
         }
 
         [HttpGet]
-        public IList<Login> GetByInfo(string username, string password)
+        public IQueryable<Login> GetByInfo(string username, string password)
         {
-            return _loginService.Get(n => n.Username.ToLower().Equals(username.ToLower())).ToList();
+            return _loginService.Get(n => n.Username.ToLower().Contains(username.ToLower()));
         }
 
         [HttpPost]

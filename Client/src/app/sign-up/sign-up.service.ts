@@ -30,7 +30,7 @@ export class SignUpService extends AppService {
 	}
 	
 	getAll(): any{
-		return this.get("get");
+		return this.get("GetAll");
 	}
 
 	getTitle() {

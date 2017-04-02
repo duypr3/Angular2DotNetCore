@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -10,8 +11,10 @@ namespace WebAPI.Common
         Task Insert(T o);
 
         IQueryable<T> GetAll(string s = "");
+        Task<IList<T>> GetAllAsync(string s = "");
 
         IQueryable<T> Get(Expression<Func<T, bool>> filter = null, string includeProperties = "");
+        Task<IList<T>> GetAsync(Expression<Func<T, bool>> filter = null, string includeProperties = "");
 
         T GetByID(object ID);
 
@@ -25,5 +28,6 @@ namespace WebAPI.Common
         Task Delete(Expression<Func<T, bool>> filter = null, string includeProperties = "");
 
         IQueryable<T> GetWithPaging(Expression<Func<T, bool>> filter = null, string includeProperties = "", int take = default(int), int skip = default(int));
+        Task<IList<T>> GetWithPagingAsync(Expression<Func<T, bool>> filter = null, string includeProperties = "", int take = default(int), int skip = default(int));
     }
 }

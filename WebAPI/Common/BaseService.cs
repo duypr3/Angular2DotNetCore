@@ -30,10 +30,18 @@ namespace WebAPI.Base
         {
             return _repo.Get(filter, includeProperties);
         }
+        public async Task<IList<T>> GetAsync(Expression<Func<T, bool>> filter = null, string includeProperties = "")
+        {
+            return await _repo.Get(filter, includeProperties).ToListAsync();
+        }
 
         public IQueryable<T> GetAll(string s = "")
         {
             return _repo.GetAll(s);
+        }
+        public async Task<IList<T>> GetAllAsync(string s = "")
+        {
+            return await _repo.GetAll(s).ToListAsync();
         }
 
         public T GetByID(object ID)
@@ -78,5 +86,11 @@ namespace WebAPI.Base
             IQueryable<T> query = _repo.Get(filter, includeProperties);
             return query.Take(take).Skip(skip);
         }
+        public async Task<IList<T>> GetWithPagingAsync(Expression<Func<T, bool>> filter = null, string includeProperties = "", int take = default(int), int skip = default(int))
+        {
+            IQueryable<T> query = _repo.Get(filter, includeProperties);
+            return await query.Take(take).Skip(skip).ToListAsync();
+        }
+        
     }
 }

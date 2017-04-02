@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { User } from './user.model';
+import { User } from './user.model'; // dont need to use it
 import { SignUpService } from './sign-up.service';
 
 /*export class User1{
@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit {
     
   constructor(private signUpService: SignUpService) { }
 
-  user = new User();
+  user: any = {};
   
   ngOnInit() {
       //console.log('INIT >>user>> ', this.user);    
@@ -74,11 +74,19 @@ export class SignUpComponent implements OnInit {
   }
   getByInfo(){
     let newparam : any = {
-      username: 'registers1111',
+      username: '1',
       password: 'password11'
     }
     //let username: string = 'registers';
     this.signUpService.getByInfo(newparam).subscribe(
+	             result => {
+	             	console.log('reuslt>>> ', result); 
+	             },
+	             error =>  {console.error("[ deleteSignUp ]: " + <any>error);}
+	         );
+  }
+  getAll(){
+    this.signUpService.getAll().subscribe(
 	             result => {
 	             	console.log('reuslt>>> ', result); 
 	             },
