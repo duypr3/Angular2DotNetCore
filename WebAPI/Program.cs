@@ -14,7 +14,7 @@ namespace WebAPI
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseUrls("http://*:4200")
+                //.UseUrls("http://*:4200") always override by ANCM (asp.net core module)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
