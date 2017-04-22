@@ -10,6 +10,7 @@ export class OxygenComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('localStore: ', sessionStorage.getItem("user"));
   }
 
 }
